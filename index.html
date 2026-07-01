@@ -21,8 +21,9 @@
     />
     <meta property="og:image" content="assets/hero-fantasy.webp" />
     <title>Hamikho Genshin Service | Price List & Discord Orders</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="assets/hero-fantasy.webp" as="image" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260627-5" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -106,8 +107,10 @@
                 type="search"
                 placeholder="Search services, regions, or prices"
                 autocomplete="off"
+                aria-controls="searchResults"
               />
             </label>
+            <div class="search-results" id="searchResults" aria-live="polite" hidden></div>
             <div class="filter-row" id="filterRow" aria-label="Category filters"></div>
             <p class="result-count" id="resultCount" aria-live="polite"></p>
           </div>
@@ -260,6 +263,6 @@
       </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="script.js?v=20260627-5" defer></script>
   </body>
 </html>

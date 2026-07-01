@@ -160,6 +160,146 @@ const priceList = {
   "exploration": {
     "perPercent": 500
   },
+  "oculusServices": [
+    {
+      "name": "10 Oculus",
+      "price": 5000,
+      "note": "Harga bisa naik jika perlu quest pembuka area."
+    },
+    {
+      "name": "20 Oculus",
+      "price": 10000,
+      "note": "Harga bisa naik jika perlu quest pembuka area."
+    }
+  ],
+  "characterAscend": [
+    {
+      "name": "Level 1 to 20",
+      "price": 7000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 20 to 40",
+      "price": 7000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 40 to 50",
+      "price": 7000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 50 to 60",
+      "price": 12000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 60 to 70",
+      "price": 12000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 70 to 80",
+      "price": 18000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 80 to 90",
+      "price": 25000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Paket Ascend Character 1 to 90",
+      "price": 80000
+    }
+  ],
+  "weaponAscend": [
+    {
+      "name": "Level 1 to 20",
+      "price": 5000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 20 to 40",
+      "price": 5000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 40 to 50",
+      "price": 5000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 50 to 60",
+      "price": 7000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 60 to 70",
+      "price": 7000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 70 to 80",
+      "price": 16000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Level 80 to 90",
+      "price": 20000,
+      "unit": "/ ascend"
+    },
+    {
+      "name": "Paket Ascend Weapon 1 to 90",
+      "price": 60000
+    }
+  ],
+  "talentServices": [
+    {
+      "name": "Level 1 to 2",
+      "price": 2000
+    },
+    {
+      "name": "Level 2 to 3",
+      "price": 4000
+    },
+    {
+      "name": "Level 3 to 4",
+      "price": 6000
+    },
+    {
+      "name": "Level 4 to 5",
+      "price": 8000
+    },
+    {
+      "name": "Level 5 to 6",
+      "price": 10000
+    },
+    {
+      "name": "Level 6 to 7",
+      "price": 12000
+    },
+    {
+      "name": "Level 7 to 8",
+      "price": 14000
+    },
+    {
+      "name": "Level 8 to 9",
+      "price": 16000
+    },
+    {
+      "name": "Level 9 to 10",
+      "price": 18000
+    },
+    {
+      "name": "Paket Talent 1 to 10",
+      "price": 85000
+    },
+    {
+      "name": "Paket Triple Crown",
+      "price": 250000
+    }
+  ],
   "regions": [
     {
       "id": "mondstadt",
@@ -2268,7 +2408,7 @@ function regionById(id) {
 }
 
 function serviceDescription(region, group) {
-  return `${group.name} — ${region.summary}`;
+  return `${group.name} - ${region.summary}`;
 }
 
 function servicesFromRegions(regionIds, filter = () => true) {
@@ -2363,6 +2503,52 @@ function buildCategories() {
     ),
   );
 
+  const oculusServices = priceList.oculusServices.map((service) =>
+    makeService(
+      `oculus-${slug(service.name)}`,
+      service.name,
+      `Oculus collection package. ${service.note}`,
+      rupiah(service.price),
+      ["Oculus", "Exploration", "Collection"],
+    ),
+  );
+
+  const characterAscendServices = priceList.characterAscend.map((service) =>
+    makeService(
+      `character-ascend-${slug(service.name)}`,
+      `Ascend Character - ${service.name}`,
+      "Character ascend service sesuai tier level terbaru.",
+      `${rupiah(service.price)}${service.unit ? ` ${service.unit}` : ""}`,
+      ["Ascend Character", "Character", "Progression"],
+    ),
+  );
+
+  const weaponAscendServices = priceList.weaponAscend.map((service) =>
+    makeService(
+      `weapon-ascend-${slug(service.name)}`,
+      `Ascend Weapon - ${service.name}`,
+      "Weapon ascend service sesuai tier level terbaru.",
+      `${rupiah(service.price)}${service.unit ? ` ${service.unit}` : ""}`,
+      ["Ascend Weapon", "Weapon", "Progression"],
+    ),
+  );
+
+  const talentServices = priceList.talentServices.map((service) =>
+    makeService(
+      `talent-${slug(service.name)}`,
+      `Talent - ${service.name}`,
+      "Talent upgrade service sesuai level atau paket terbaru.",
+      rupiah(service.price),
+      ["Talent", "Crown", "Progression"],
+    ),
+  );
+
+  const progressionServices = [
+    ...characterAscendServices,
+    ...weaponAscendServices,
+    ...talentServices,
+  ];
+
   return [
     {
       id: "archon-world-quest",
@@ -2388,6 +2574,22 @@ function buildCategories() {
         ),
         ...servicesByTag("Explore", allRegionIds),
       ],
+    },
+    {
+      id: "oculus-services",
+      name: "Oculus Services",
+      short: "Oculus",
+      accent: "#6bd7ff",
+      summary: "Oculus collection package 10 atau 20 Oculus, dengan catatan quest pembuka area.",
+      services: oculusServices,
+    },
+    {
+      id: "ascend-talent-services",
+      name: "Ascend & Talent Services",
+      short: "Ascend",
+      accent: "#f1c87a",
+      summary: "Ascend character, ascend weapon, talent level, paket talent, dan triple crown.",
+      services: progressionServices,
     },
     {
       id: "aranyaka-quest",
@@ -2784,6 +2986,7 @@ const elements = {
   filterRow: document.querySelector("#filterRow"),
   catalogList: document.querySelector("#catalogList"),
   serviceSearch: document.querySelector("#serviceSearch"),
+  searchResults: document.querySelector("#searchResults"),
   resultCount: document.querySelector("#resultCount"),
   regionGrid: document.querySelector("#regionGrid"),
   endgameGrid: document.querySelector("#endgameGrid"),
@@ -2834,7 +3037,6 @@ function findService(categoryId, serviceId) {
 
 function serviceMatches(category, service) {
   const text = [
-    category.name,
     category.short,
     service.name,
     service.description,
@@ -2847,6 +3049,72 @@ function serviceMatches(category, service) {
   const matchesQuery = !state.query || text.includes(state.query);
   const matchesCategory = state.activeCategory === "all" || state.activeCategory === category.id;
   return matchesQuery && matchesCategory;
+}
+
+function getMatchedServices(limit) {
+  const matches = [];
+
+  categories.forEach((category) => {
+    category.services.forEach((service) => {
+      if (!serviceMatches(category, service)) return;
+      matches.push({ category, service });
+    });
+  });
+
+  return typeof limit === "number" ? matches.slice(0, limit) : matches;
+}
+
+function renderSearchResults(visibleServices) {
+  if (!elements.searchResults) return;
+
+  if (!state.query) {
+    document.body.classList.remove("is-searching");
+    elements.searchResults.hidden = true;
+    elements.searchResults.innerHTML = "";
+    return;
+  }
+
+  const matches = getMatchedServices(6);
+  document.body.classList.add("is-searching");
+  elements.searchResults.hidden = false;
+
+  if (!matches.length) {
+    elements.searchResults.innerHTML = `
+      <div class="search-results-head">
+        <strong>No results for "${escapeHtml(state.query)}"</strong>
+        <span>Try another service, region, or price keyword.</span>
+      </div>
+      <button class="search-clear" type="button" data-clear-search>Clear search</button>
+    `;
+    return;
+  }
+
+  elements.searchResults.innerHTML = `
+    <div class="search-results-head">
+      <strong>${visibleServices} result${visibleServices === 1 ? "" : "s"} for "${escapeHtml(state.query)}"</strong>
+      <span>Tap a result to prepare the Discord order message.</span>
+    </div>
+    <div class="search-result-list">
+      ${matches
+        .map(
+          ({ category, service }) => `
+            <button
+              class="search-result-item"
+              type="button"
+              data-order="${escapeHtml(getServiceKey(category.id, service.id))}"
+              aria-label="Order ${escapeHtml(service.name)} from ${escapeHtml(category.name)}"
+            >
+              <span>
+                <strong>${escapeHtml(service.name)}</strong>
+                <small>${escapeHtml(category.name)}</small>
+              </span>
+              <em>${escapeHtml(service.price)}</em>
+            </button>
+          `,
+        )
+        .join("")}
+    </div>
+  `;
 }
 
 function renderFilters() {
@@ -2868,6 +3136,7 @@ function renderFilters() {
       `,
     )
     .join("");
+  elements.filterRow.scrollLeft = 0;
 }
 
 function renderRegionCards() {
@@ -2940,6 +3209,7 @@ function renderCatalog() {
                         class="order-button"
                         type="button"
                         data-order="${escapeHtml(getServiceKey(category.id, service.id))}"
+                        aria-label="Order ${escapeHtml(service.name)} from ${escapeHtml(category.name)}"
                       >
                         Order
                       </button>
@@ -2964,6 +3234,7 @@ function renderCatalog() {
 
   const total = getTotalServices();
   elements.resultCount.textContent = `Showing ${visibleServices} of ${total} services`;
+  renderSearchResults(visibleServices);
   observeReveals(elements.catalogList);
 }
 
@@ -2978,7 +3249,12 @@ function renderEndgame() {
             <li>
               <span>${escapeHtml(service.name)}</span>
               <strong>${escapeHtml(rupiah(service.price))}</strong>
-              <button class="order-button" type="button" data-order="${escapeHtml(getServiceKey(category.id, serviceId))}">
+              <button
+                class="order-button"
+                type="button"
+                data-order="${escapeHtml(getServiceKey(category.id, serviceId))}"
+                aria-label="Order ${escapeHtml(group.category)} ${escapeHtml(service.name)}"
+              >
                 Order
               </button>
             </li>
@@ -3003,13 +3279,19 @@ function renderFaq() {
     .map(
       (faq, index) => `
         <article class="faq-item${index === 0 ? " is-open" : ""}">
-          <button class="faq-question" type="button" aria-expanded="${index === 0 ? "true" : "false"}">
+          <button
+            class="faq-question"
+            id="faq-question-${index}"
+            type="button"
+            aria-expanded="${index === 0 ? "true" : "false"}"
+            aria-controls="faq-answer-${index}"
+          >
             <span>Q: ${escapeHtml(faq.question)}</span>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="m12 15.4-6.3-6.3 1.4-1.4 4.9 4.9 4.9-4.9 1.4 1.4-6.3 6.3Z" />
             </svg>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-answer-${index}" role="region" aria-labelledby="faq-question-${index}">
             <div>
               <p>A: ${escapeHtml(faq.answer)}</p>
             </div>
@@ -3068,6 +3350,10 @@ function getOrderMessage(category, service) {
 
 function selectService(category, service) {
   state.selectedService = { category, service };
+  document.body.classList.remove("is-searching");
+  if (elements.searchResults) {
+    elements.searchResults.hidden = true;
+  }
   elements.selectedService.innerHTML = `
     <span>${escapeHtml(category.name)}</span>
     <strong>${escapeHtml(service.name)} - ${escapeHtml(service.price)}</strong>
