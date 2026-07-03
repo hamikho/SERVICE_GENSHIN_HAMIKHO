@@ -1,7 +1,7 @@
 "use strict";
 
 const DISCORD = {
-  username: "Hamikho Genshin Service",
+  username: "Hamikho",
   invite: "https://discord.gg/nuvbwumq",
 };
 
@@ -2384,6 +2384,34 @@ const priceList = {
           ]
         }
       ]
+    },
+    {
+      "id": "frostmoon",
+      "name": "Frostmoon",
+      "short": "Frostmoon",
+      "accent": "#b8d7ff",
+      "summary": "Full Package Frost Moon: quest prasyarat + eksplorasi Act I - Act III.",
+      "groups": [
+        {
+          "name": "Full Package",
+          "type": "package",
+          "services": [
+            {
+              "name": "Quest Prasyarat + Eksplorasi Act I - Act III",
+              "price": 70000,
+              "tags": [
+                "Quest",
+                "Explore",
+                "Package",
+                "Frostmoon",
+                "Frost Moon",
+                "Nod-Krai",
+                "Act I - Act III"
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 };
@@ -2630,6 +2658,14 @@ function buildCategories() {
       accent: "#9dc0ff",
       summary: "Temple of Space quest dan exploration.",
       services: servicesFromRegions(["temple-of-space"]),
+    },
+    {
+      id: "frostmoon-services",
+      name: "Frostmoon Services",
+      short: "Frostmoon",
+      accent: "#b8d7ff",
+      summary: "Full Package Frost Moon: quest prasyarat + eksplorasi Act I - Act III.",
+      services: servicesFromRegions(["frostmoon"]),
     },
     {
       id: "chasm-services",
@@ -2907,6 +2943,20 @@ const regionCards = [
     ]
   },
   {
+    "name": "Frostmoon",
+    "subtitle": "Nod-Krai Moon Area",
+    "image": "assets/regions/frost-moon.webp",
+    "emblem": "assets/emblems/frost-moon-emblem-night.webp",
+    "accent": "#b8d7ff",
+    "target": "frostmoon-services",
+    "query": "Frostmoon",
+    "highlights": [
+      "Full Package Rp 70.000",
+      "Quest + Eksplorasi",
+      "Act I - Act III"
+    ]
+  },
+  {
     "name": "Nod-Krai",
     "subtitle": "Moonlit Frontier",
     "image": "assets/regions/nod-krai.webp",
@@ -3064,6 +3114,28 @@ function getMatchedServices(limit) {
   return typeof limit === "number" ? matches.slice(0, limit) : matches;
 }
 
+function getSearchResultMatches(limit) {
+  const broadCategoryIds = new Set(["archon-world-quest", "exploration-services"]);
+  const uniqueMatches = new Map();
+
+  getMatchedServices().forEach((match) => {
+    const key = match.service.id;
+    const existing = uniqueMatches.get(key);
+
+    if (!existing) {
+      uniqueMatches.set(key, match);
+      return;
+    }
+
+    if (broadCategoryIds.has(existing.category.id) && !broadCategoryIds.has(match.category.id)) {
+      uniqueMatches.set(key, match);
+    }
+  });
+
+  const matches = [...uniqueMatches.values()];
+  return typeof limit === "number" ? matches.slice(0, limit) : matches;
+}
+
 function renderSearchResults(visibleServices) {
   if (!elements.searchResults) return;
 
@@ -3074,7 +3146,8 @@ function renderSearchResults(visibleServices) {
     return;
   }
 
-  const matches = getMatchedServices(6);
+  const matches = getSearchResultMatches(6);
+  const resultTotal = matches.length;
   document.body.classList.add("is-searching");
   elements.searchResults.hidden = false;
 
@@ -3091,7 +3164,7 @@ function renderSearchResults(visibleServices) {
 
   elements.searchResults.innerHTML = `
     <div class="search-results-head">
-      <strong>${visibleServices} result${visibleServices === 1 ? "" : "s"} for "${escapeHtml(state.query)}"</strong>
+      <strong>${resultTotal} result${resultTotal === 1 ? "" : "s"} for "${escapeHtml(state.query)}"</strong>
       <span>Tap a result to prepare the Discord order message.</span>
     </div>
     <div class="search-result-list">

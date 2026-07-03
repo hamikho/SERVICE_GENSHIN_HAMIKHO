@@ -297,12 +297,17 @@ button {
 }
 
 .hero-tools .filter-row {
+  width: 100%;
+  max-width: 100%;
   flex-wrap: nowrap;
   justify-content: flex-start;
+  direction: ltr;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-padding-inline: 12px;
+  scrollbar-width: thin;
   touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
   padding-inline: 4px;
 }
 
