@@ -2221,7 +2221,7 @@ export const regionCards = [
   {
     "name": "Enkanomiya",
     "subtitle": "Evernight Realm",
-    "image": "assets/regions/enkanomiya.webp",
+    "image": "assets/regions/enkanomiya-v2.png",
     "emblem": "assets/emblems/enkanomiya-emblem.webp",
     "accent": "#7db9ff",
     "target": "enkanomiya-services",
@@ -2234,7 +2234,7 @@ export const regionCards = [
   {
     "name": "Dragonspine",
     "subtitle": "Snow-Covered Mountain",
-    "image": "assets/regions/dragonspine.webp",
+    "image": "assets/regions/dragonspine-v2.png",
     "emblem": "assets/emblems/dragonspine-emblem.webp",
     "accent": "#9ed8ff",
     "target": "mondstadt-services",
@@ -2248,7 +2248,7 @@ export const regionCards = [
   {
     "name": "Sea of Bygone Eras",
     "subtitle": "Ancient Fontaine Sea",
-    "image": "assets/regions/sea-of-bygone-eras.webp",
+    "image": "assets/regions/sea-of-bygone-eras-v2.png",
     "emblem": "assets/emblems/sea-of-bygone-eras-emblem.webp",
     "accent": "#6bd7ff",
     "target": "fontaine-services",

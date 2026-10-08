@@ -317,8 +317,23 @@ function setupNavigation() {
   elements.navMenu.addEventListener("click", (event) => {
     const link = event.target.closest("a");
     if (!link) return;
+    const href = link.getAttribute("href");
+    if (href === "#home" || href === "#regions") {
+      event.preventDefault();
+      history.replaceState(null, "", href);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
     closeMobileMenu();
   });
+
+  const brand = document.querySelector(".brand");
+  if (brand) {
+    brand.addEventListener("click", (event) => {
+      event.preventDefault();
+      history.replaceState(null, "", "#home");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMobileMenu();

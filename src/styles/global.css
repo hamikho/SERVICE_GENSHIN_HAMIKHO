@@ -66,6 +66,7 @@ a {
   text-decoration: none;
 }
 
+#home,
 section[id],
 article[id] {
   scroll-margin-top: 96px;
@@ -381,15 +382,17 @@ button {
 
 .region-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 22px;
 }
 
 .region-card {
   --accent: var(--gold);
   position: relative;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  min-height: 342px;
+  min-height: auto;
   border: 1px solid color-mix(in srgb, var(--accent) 54%, rgba(255, 255, 255, 0.13));
   border-radius: var(--radius);
   padding: 0;
@@ -415,10 +418,11 @@ button {
 
 .region-image {
   position: relative;
-  display: grid;
-  aspect-ratio: 16 / 9;
+  display: block;
+  aspect-ratio: 16 / 10;
+  width: 100%;
   height: auto;
-  place-items: start center;
+  flex-shrink: 0;
   overflow: hidden;
   background:
     radial-gradient(circle at 50% 8%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 48%),
@@ -430,26 +434,31 @@ button {
   inset: 0;
   content: "";
   background:
-    linear-gradient(180deg, rgba(7, 10, 15, 0.04), rgba(7, 10, 15, 0.78)),
-    linear-gradient(90deg, color-mix(in srgb, var(--accent) 22%, transparent), transparent 58%);
+    linear-gradient(180deg, transparent 50%, rgba(7, 10, 15, 0.65) 100%),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 58%);
+  pointer-events: none;
 }
 
 .region-image img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain !important;
-  object-position: center top !important;
+  object-fit: cover;
+  object-position: center center;
+  transform: none;
   transition: transform 280ms var(--ease);
 }
 
 .region-card:hover .region-image img {
-  transform: none;
+  transform: scale(1.04);
 }
 
 .region-content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   gap: 8px;
-  padding: 0 16px 17px;
+  padding: 0 18px 20px;
 }
 
 .region-symbol {
@@ -491,7 +500,8 @@ button {
 .region-highlights {
   display: grid;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 6px;
+  flex: 1;
 }
 
 .region-highlights small {
@@ -515,7 +525,8 @@ button {
 }
 
 .region-card em {
-  margin-top: 6px;
+  margin-top: auto;
+  padding-top: 14px;
   color: color-mix(in srgb, var(--accent) 86%, #ffffff);
   font-size: 13px;
   font-style: normal;
@@ -1609,11 +1620,13 @@ body.is-searching .floating-discord {
   }
 
   .region-image {
+    aspect-ratio: 16 / 9;
     height: auto;
   }
 
   .region-image img {
-    object-fit: contain !important;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .region-content {

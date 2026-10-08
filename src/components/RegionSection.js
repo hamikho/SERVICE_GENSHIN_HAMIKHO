@@ -5,9 +5,10 @@ export function renderRegionCards(regionCards) {
     .map(
       (region) => `
         <button
-          class="region-card reveal"
+          class="region-card reveal region-card-${escapeHtml(region.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}"
           type="button"
           style="--accent: ${region.accent}"
+          data-region="${escapeHtml(region.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}"
           data-region-target="${escapeHtml(region.target)}"
           data-region-query="${escapeHtml(region.query || "")}"
         >
