@@ -219,6 +219,14 @@ export function buildCategories() {
       services: servicesFromRegions(natlanIds),
     },
     {
+      id: "snezhnaya-services",
+      name: "Snezhnaya Services",
+      short: "Snezhnaya",
+      accent: "#70d6ff",
+      summary: "Archon Quest 7.0 & 7.1 (total 4 Act), eksplorasi map Snezhnaya, dan paket komplit.",
+      services: servicesFromRegions(["snezhnaya"]),
+    },
+    {
       id: "nodkrai-services",
       name: "Nod-Krai Services",
       short: "Nod-Krai",

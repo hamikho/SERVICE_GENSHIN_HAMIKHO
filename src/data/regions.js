@@ -2110,6 +2110,306 @@ export const regions = [
           ]
         }
       ]
+    },
+    {
+      "id": "snezhnaya",
+      "name": "Snezhnaya",
+      "short": "Snezhnaya",
+      "accent": "#70d6ff",
+      "summary": "Archon Quest 7.0 & 7.1 (total 4 Act), eksplorasi map Snezhnaya, dan paket komplit.",
+      "groups": [
+        {
+          "name": "Quest 7.0",
+          "type": "quest",
+          "services": [
+            {
+              "name": "Archon Quest Chapter VI: Act I - Bunga Salju Yang Tak Meleleh",
+              "price": 35000,
+              "tags": [
+                "Quest",
+                "Snezhnaya",
+                "7.0",
+                "Archon Quest"
+              ]
+            },
+            {
+              "name": "Archon Quest Chapter VI: Act II - Rahasia Istana Zapolyarny",
+              "price": 35000,
+              "tags": [
+                "Quest",
+                "Snezhnaya",
+                "7.0",
+                "Archon Quest"
+              ]
+            },
+            {
+              "name": "Paket Archon Quest 7.0 (Total 2 Act)",
+              "price": 70000,
+              "tags": [
+                "Quest",
+                "Package",
+                "Snezhnaya",
+                "7.0"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Quest 7.1",
+          "type": "quest",
+          "services": [
+            {
+              "name": "Archon Quest Chapter VI: Act III - Gema Malam Abadi",
+              "price": 35000,
+              "tags": [
+                "Quest",
+                "Snezhnaya",
+                "7.1",
+                "Archon Quest"
+              ]
+            },
+            {
+              "name": "Archon Quest Chapter VI: Act IV - Penghakiman Badai Es",
+              "price": 35000,
+              "tags": [
+                "Quest",
+                "Snezhnaya",
+                "7.1",
+                "Archon Quest"
+              ]
+            },
+            {
+              "name": "Paket Archon Quest 7.1 (Total 2 Act)",
+              "price": 70000,
+              "tags": [
+                "Quest",
+                "Package",
+                "Snezhnaya",
+                "7.1"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Explore Area 7.0",
+          "type": "explore",
+          "services": [
+            {
+              "name": "Volkodlak Tundra",
+              "price": 70000,
+              "tags": [
+                "Explore",
+                "Snezhnaya",
+                "7.0",
+                "Volkodlak Tundra"
+              ]
+            },
+            {
+              "name": "Flamefeather Valley",
+              "price": 50000,
+              "tags": [
+                "Explore",
+                "Snezhnaya",
+                "7.0",
+                "Flamefeather Valley"
+              ]
+            },
+            {
+              "name": "Fellfrost Peak",
+              "price": 80000,
+              "tags": [
+                "Explore",
+                "Snezhnaya",
+                "7.0",
+                "Fellfrost Peak"
+              ]
+            },
+            {
+              "name": "Everfrozen Earth",
+              "price": 80000,
+              "tags": [
+                "Explore",
+                "Snezhnaya",
+                "7.0",
+                "Everfrozen Earth"
+              ]
+            },
+            {
+              "name": "White Birch Snowgrave",
+              "price": 60000,
+              "tags": [
+                "Explore",
+                "Snezhnaya",
+                "7.0",
+                "White Birch Snowgrave"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Quest Prasyarat Area 7.0",
+          "type": "quest",
+          "services": [
+            {
+              "name": "Flamefeather: Di Kediaman Kehidupan",
+              "price": 30000,
+              "tags": [
+                "Quest",
+                "Quest Prasyarat",
+                "Snezhnaya",
+                "Flamefeather Valley"
+              ]
+            },
+            {
+              "name": "Fellfrost: Hesperides di Antara Cinta dan Benci",
+              "price": 25000,
+              "tags": [
+                "Quest",
+                "Quest Prasyarat",
+                "Snezhnaya",
+                "Fellfrost Peak"
+              ]
+            },
+            {
+              "name": "Fellfrost: Jack Frost Kecil, Masalah Besar",
+              "price": "Termasuk di Explore",
+              "tags": [
+                "Quest",
+                "In Explore",
+                "Snezhnaya",
+                "Fellfrost Peak"
+              ]
+            },
+            {
+              "name": "Fellfrost: Demi Pecahan Cermin Es",
+              "price": "Termasuk di Explore",
+              "tags": [
+                "Quest",
+                "In Explore",
+                "Snezhnaya",
+                "Fellfrost Peak"
+              ]
+            },
+            {
+              "name": "Fellfrost: Dalam Ketenangan Siklus",
+              "price": "Termasuk di Explore",
+              "tags": [
+                "Quest",
+                "In Explore",
+                "Snezhnaya",
+                "Fellfrost Peak"
+              ]
+            },
+            {
+              "name": "Everfrozen: Pertikaian Tanpa Kehormatan dan Kemanusiaan",
+              "price": 20000,
+              "tags": [
+                "Quest",
+                "Quest Prasyarat",
+                "Snezhnaya",
+                "Everfrozen Earth"
+              ]
+            },
+            {
+              "name": "Everfrozen: Lagu Lembut yang Dia Nyanyikan",
+              "price": "Termasuk di Explore",
+              "tags": [
+                "Quest",
+                "In Explore",
+                "Snezhnaya",
+                "Everfrozen Earth"
+              ]
+            },
+            {
+              "name": "Everfrozen: Pedang Salju Berhutan",
+              "price": "Termasuk di Explore",
+              "tags": [
+                "Quest",
+                "In Explore",
+                "Snezhnaya",
+                "Everfrozen Earth"
+              ]
+            },
+            {
+              "name": "White Birch: Di Satu Sisi Istana, di Sisi Lain Makam",
+              "price": 25000,
+              "tags": [
+                "Quest",
+                "Quest Prasyarat",
+                "Snezhnaya",
+                "White Birch Snowgrave"
+              ]
+            },
+            {
+              "name": "White Birch: Istananya Runtuh Diterpa Badai Salju",
+              "price": 10000,
+              "tags": [
+                "Quest",
+                "Quest Prasyarat",
+                "Snezhnaya",
+                "White Birch Snowgrave"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Paket Snezhnaya",
+          "type": "package",
+          "services": [
+            {
+              "name": "Full Explore Snezhnaya 7.0 (5 Area)",
+              "price": 340000,
+              "tags": [
+                "Explore",
+                "Package",
+                "Snezhnaya",
+                "7.0"
+              ]
+            },
+            {
+              "name": "Full Quest Prasyarat Snezhnaya 7.0",
+              "price": 110000,
+              "tags": [
+                "Quest",
+                "Package",
+                "Snezhnaya",
+                "7.0"
+              ]
+            },
+            {
+              "name": "Quest Prasyarat + Explore Snezhnaya 7.0",
+              "price": 450000,
+              "tags": [
+                "Quest",
+                "Explore",
+                "Package",
+                "Snezhnaya",
+                "7.0"
+              ]
+            },
+            {
+              "name": "Bundle Archon Quest (7.0 + 7.1) Total 4 Act",
+              "price": 140000,
+              "tags": [
+                "Quest",
+                "Package",
+                "Snezhnaya"
+              ]
+            },
+            {
+              "name": "Paket Komplit (Archon Quest + Quest Prasyarat + Explore)",
+              "price": 590000,
+              "tags": [
+                "Quest",
+                "Explore",
+                "Package",
+                "Snezhnaya",
+                "7.0"
+              ]
+            }
+          ]
+        }
+      ]
     }
 ];
 
@@ -2203,6 +2503,20 @@ export const regionCards = [
       "5.0 Rp 300.000",
       "5.2 Rp 200.000",
       "5.5 Rp 220.000"
+    ]
+  },
+  {
+    "name": "Snezhnaya",
+    "subtitle": "The Nation of Cryo",
+    "image": "assets/regions/snezhnaya.png",
+    "emblem": "assets/emblems/snezhnaya-emblem.png",
+    "accent": "#70d6ff",
+    "target": "snezhnaya-services",
+    "query": "Snezhnaya",
+    "highlights": [
+      "Quest 7.0 (2 Act) Rp 70.000",
+      "Quest 7.1 (2 Act) Rp 70.000",
+      "Quest + Explore Rp 450.000"
     ]
   },
   {

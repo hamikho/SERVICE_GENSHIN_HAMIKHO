@@ -1,4 +1,7 @@
 export function rupiah(value) {
+  if (typeof value !== "number" || isNaN(value)) {
+    return value || "Segera Hadir";
+  }
   return `Rp ${new Intl.NumberFormat("id-ID").format(value)}`;
 }
 
